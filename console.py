@@ -51,37 +51,37 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing to do"""
         pass
 
-    def def(self, arg):
+    def funct(self, arg):
         """ cmd Default behavior """
         ar = {
-            "all": self.6_all,
-            "show": self.4_show,
-            "destroy": self.5_destroy,
-            "count": self.7_count,
-            "update": self.8_update
+            "all": self.all_6, # 6_all
+            "show": self.show_4, # 4_show
+            "destroy": self.destroy_5, # 5_destroy
+            "count": self.count_7, # 7_count
+            "update": self.update_8 # 8_update
         }
         m = re.search(r"\.", arg)
         if m is not None:
             a = [arg[:m.span()[0]], arg[m.span()[1]:]]
             m = re.search(r"\((.*?)\)", a[1])
             if m is not None:
-                comm = [argl[1][:m.span()[0]], m.group()[1:-1]]
+                comm = [arg[1][:m.span()[0]], m.group()[1:-1]]
                 if comm[0] in ar.keys():
                     helpp = "{} {}".format(a[0], comm[1])
                     return ar[comm[0]](helpp)
         print("*** syntax is Unknown: {}".format(arg))
         return False
 
-    def 1_quit(self, arg):
+    def quit_1(self, arg): #  1_quit
         """Quit command"""
         return True
 
-    def 2_EOF(self, arg):
+    def EOF_2(self, arg): # 2_EOF
         """EOF signal"""
         print("")
         return True
 
-    def 3_create(self, arg):
+    def create_3(self, arg): # 3_create
         """create class
         Create a new class instance.
         """
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(a[0])().id)
             storage.save()
 
-    def 4_show(self, arg):
+    def show_4(self, arg): 
         """show class id || class.show(id)
         class representation.
         """
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(ob["{}.{}".format(a[0], a[1])])
 
-    def 5_destroy(self, arg):
+    def destroy_5(self, arg):
         """destroy class id || class.destroy(id)
         Delete a class instance"""
         a = p(arg)
@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
             del ob["{}.{}".format(a[0], a[1])]
             storage.save()
 
-    def 6_all(self, arg):
+    def all_6(self, arg):
         """all || all class || class.all()
         Display string representations of all instances."""
         a = p(arg)
@@ -143,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
                     ol.append(o.__str__())
             print(ol)
 
-    def 7_count(self, arg):
+    def count_7(self, arg):
         """count class || class.count()
         return the number of instances"""
         a = p(arg)
@@ -153,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
                 co += 1
         print(co)
 
-    def 8_update(self, arg):
+    def update_8(self, arg):
         """update class id attribute_name attribute_value ||
        class.update(id, attribute_name, attribute_value) ||
        class.update(id, dictionary)
