@@ -180,7 +180,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 type(eval(a[2])) != dict
             except NameError:
-                print("** value missing **")
+                print("** value is missing **")
                 return False
 
         if len(a) == 4:
