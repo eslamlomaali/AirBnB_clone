@@ -54,11 +54,11 @@ class HBNBCommand(cmd.Cmd):
     def funct(self, arg):
         """ cmd Default behavior """
         ar = {
-            "all": self.all_6, # 6_all
-            "show": self.show_4, # 4_show
-            "destroy": self.destroy_5, # 5_destroy
-            "count": self.count_7, # 7_count
-            "update": self.update_8 # 8_update
+            "all": self.all_6,  
+            "show": self.show_4, 
+            "destroy": self.destroy_5,
+            "count": self.count_7,
+            "update": self.update_8
         }
         m = re.search(r"\.", arg)
         if m is not None:
@@ -72,16 +72,16 @@ class HBNBCommand(cmd.Cmd):
         print("*** syntax is Unknown: {}".format(arg))
         return False
 
-    def quit_1(self, arg): #  1_quit
+    def quit_1(self, arg):
         """Quit command"""
         return True
 
-    def EOF_2(self, arg): # 2_EOF
+    def EOF_2(self, arg):  
         """EOF signal"""
         print("")
         return True
 
-    def create_3(self, arg): # 3_create
+    def create_3(self, arg):
         """create class
         Create a new class instance.
         """
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(a[0])().id)
             storage.save()
 
-    def show_4(self, arg): 
+    def show_4(self, arg):
         """show class id || class.show(id)
         class representation.
         """

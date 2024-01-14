@@ -50,7 +50,7 @@ class TestBaseModel(unittest.TestCase):
         self.model.save()
         self.assertNotEqual(last, self.model.updated_at)
 
-    def  test_returns_dict(self):
+    def test_returns_dict(self):
         """ dict return type test """
         self.assertEqual(type(self.model.to_dict()), dict)
 
@@ -78,7 +78,6 @@ class TestBaseModel(unittest.TestCase):
 
 
 class TestBaseModelTwo(unittest.TestCase):
-
 
     def test_ready(self):
         """ setup for tests two """
