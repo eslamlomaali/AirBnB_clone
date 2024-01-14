@@ -12,6 +12,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 def p(arg):
     c = re.search(r"\{(.*?)\}", arg)
     b = re.search(r"\[(.*?)\]", arg)
@@ -19,12 +20,12 @@ def p(arg):
         if b is None:
             return [i.strip(",") for i in split(arg)]
         else:
-            l = split(arg[:b.span()[0]])
+            ll = split(arg[:b.span()[0]])
             r = [z.strip(",") for z in l]
             r.append(b.group())
             return r
     else:
-        l = split(arg[:c.span()[0]])
+        ll = split(arg[:c.span()[0]])
         r = [z.strip(",") for z in l]
         r.append(c.group())
         return r
@@ -54,8 +55,8 @@ class HBNBCommand(cmd.Cmd):
     def funct(self, arg):
         """ cmd Default behavior """
         ar = {
-            "all": self.all_6,  
-            "show": self.show_4, 
+            "all": self.all_6,
+            "show": self.show_4,
             "destroy": self.destroy_5,
             "count": self.count_7,
             "update": self.update_8
@@ -76,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """Quit command"""
         return True
 
-    def EOF_2(self, arg):  
+    def EOF_2(self, arg):
         """EOF signal"""
         print("")
         return True
